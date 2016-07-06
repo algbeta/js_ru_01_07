@@ -1,4 +1,5 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import CommentList from './CommentList';
 
 class Article extends Component {
     state = {
@@ -15,11 +16,12 @@ class Article extends Component {
 */
 
     render() {
-        const article = this.props.article
+        const article = this.props.article;
+        const commentList = <CommentList comments= { article.comments} isHeaderVisible = {this.props.isOpen}></CommentList>;
 //        const { article } = this.props
 //    const { article: { title, text } } = props
         const { isOpen } = this.state
-        const body = isOpen ? <section>{ article.text }</section> : null
+        const body = isOpen ? <section>{ article.text } {commentList}</section> : null
 
         return (
             <div>
