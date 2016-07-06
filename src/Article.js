@@ -1,16 +1,41 @@
 import React, { Component } from 'react';
 import CommentList from './CommentList';
 
-function Article(props){
-        const { isOpen, toggleSingleOpen, article: { title, text, comments } } = props
-        const body = isOpen ? <section>{ text } <CommentList comments = {comments} /></section> : null
+class Article extends Component {
+    state = {
+        isOpen: false
+    }
+
+/*
+    constructor(props) {
+        super(props)
+        this.state = {
+            isOpen: false
+        }
+    }
+*/
+
+    render() {
+        const article = this.props.article;
+        const commentList = <CommentList comments= { article.comments} isHeaderVisible = {this.props.isOpen}></CommentList>;
+//        const { article } = this.props
+//    const { article: { title, text } } = props
+        const { isOpen } = this.state
+        const body = isOpen ? <section>{ article.text } {commentList}</section> : null
 
         return (
             <div>
-               <h1 onClick = {toggleSingleOpen}>{ title }</h1>
-                  {body}
+                <h1 onClick = {this.toggleOpen}>{ article.title }</h1>
+                {body}
             </div>
         )
+    }
+
+    toggleOpen = (ev) => {
+        this.setState({
+            isOpen: !this.state.isOpen
+        })
+    }
 }
 
 
