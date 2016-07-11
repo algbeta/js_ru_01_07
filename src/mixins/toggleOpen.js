@@ -2,7 +2,7 @@ export default {
     getInitialState() {
         //this.props
         return {
-            isOpen: false
+            isOpen: false,
         }
     },
     toggleOpen() {
