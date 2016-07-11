@@ -1,17 +1,14 @@
 import React from 'react'
 import CommentList from './CommentList'
-import toggleOpen from '../mixins/toggleOpen'
 
 const ArticleOld = React.createClass({
-    mixins: [toggleOpen],
     render() {
-        const { article: { title, text, comments } } = this.props
-        const { isOpen } = this.state
+        const { article: { title, text, comments }, isOpen, toggleSingleOpen } = this.props
         const body = isOpen ? <section>{ text } <CommentList comments = {comments} /></section> : null
 
         return (
             <div>
-                <h1 onClick = {this.toggleOpen}>{ title }</h1>
+                <h1 onClick = {toggleSingleOpen(this.id)}>{ title }</h1>
                 {body}
             </div>
         )
