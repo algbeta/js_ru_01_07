@@ -9,7 +9,7 @@ export default {
     toggleOpen(itemId) {
         this.setState({
             openItemId: itemId,
-            isOpen: itemId != this.state.openItemId
+            isOpen: itemId != this.state.openItemId || !this.state.isOpen
         })
     }
 }
