@@ -10,7 +10,7 @@ export default (Component) => class DecoratedComponent extends React.Component {
         if (ev) ev.preventDefault();
         this.setState({
             openItemId: id,
-            isOpen: id != this.state.openItemId
+            isOpen: id != this.state.openItemId ||  !this.state.isOpen
         })
     }
 
