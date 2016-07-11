@@ -1,15 +1,8 @@
 import React, { Component, PropTypes } from 'react'
 import CommentList from './CommentList'
 
-class Article extends Component {
-
-    static propTypes = {
-        article: PropTypes.object.isRequired
-    }
-
-
-    render() {
-        const { isOpen, toggleSingleOpen, article: { title, text, comments } } = this.props
+function Article(props){
+        const { isOpen, toggleSingleOpen, article: { title, text, comments } } = props
         const body = isOpen ? <section>{ text } <CommentList comments = {comments} /></section> : null
 
         return (
@@ -18,7 +11,6 @@ class Article extends Component {
                   {body}
             </div>
         )
-    }
 }
 
 export default Article
