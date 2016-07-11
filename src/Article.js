@@ -6,35 +6,17 @@ class Article extends Component {
         isOpen: false
     }
 
-/*
-    constructor(props) {
-        super(props)
-        this.state = {
-            isOpen: false
-        }
-    }
-*/
 
     render() {
-        const article = this.props.article;
-        const commentList = <CommentList comments= { article.comments} isHeaderVisible = {this.props.isOpen}></CommentList>;
-//        const { article } = this.props
-//    const { article: { title, text } } = props
-        const { isOpen } = this.state
-        const body = isOpen ? <section>{ article.text } {commentList}</section> : null
+        const { isOpen, toggleSingleOpen, article: { title, text, comments } } = this.props
+        const body = isOpen ? <section>{ text } <CommentList comments = {comments} /></section> : null
 
         return (
             <div>
-                <h1 onClick = {this.toggleOpen}>{ article.title }</h1>
-                {body}
+               <h1 onClick = {toggleSingleOpen}>{ title }</h1>
+                  {body}
             </div>
         )
-    }
-
-    toggleOpen = (ev) => {
-        this.setState({
-            isOpen: !this.state.isOpen
-        })
     }
 }
 
