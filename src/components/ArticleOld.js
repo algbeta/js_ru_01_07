@@ -8,7 +8,7 @@ const ArticleOld = React.createClass({
 
         return (
             <div>
-                <h1 onClick = {() => toggleSingleOpen(this.id)}>{ title }</h1>
+                <h1 onClick = {toggleSingleOpen(this.id)}>{ title }</h1>
                 {body}
             </div>
         )

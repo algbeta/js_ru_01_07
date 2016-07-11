@@ -2,14 +2,15 @@ export default {
     getInitialState() {
         //this.props
         return {
-            openItemId: null,
-            isOpen: false
+            openItemId: null
         }
     },
-    toggleOpen(itemId) {
-        this.setState({
-            openItemId: itemId,
-            isOpen: itemId != this.state.openItemId || !this.state.isOpen
-        })
+    toggleSingleOpen(id) {
+        return function(ev) {
+            if (ev) ev.preventDefault();
+            this.setState({
+                openItemId: id
+            })
+        }
     }
 }

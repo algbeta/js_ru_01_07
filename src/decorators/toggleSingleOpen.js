@@ -2,21 +2,18 @@ import React from 'react'
 
 export default (Component) => class DecoratedComponent extends React.Component {
     state = {
-        openItemId: null,
-        isOpen: false
+        openItemId: null
     }
 
     toggleSingleOpen = id => ev => {
-        if (ev) ev.preventDefault();
-        //Это усложняет использование. Достаточно просто сделать openItemId === null что б закрыть
+        if (ev) ev.preventDefault()
         this.setState({
-            openItemId: id,
-            isOpen: id != this.state.openItemId ||  !this.state.isOpen
+            openItemId: id
         })
     }
 
     render() {
-        return <Component {...this.props} openItemId = {this.state.openItemId} isOpen = {this.state.isOpen} toggleSingleOpen = {this.toggleSingleOpen}/>
+        return <Component {...this.props} openItemId = {this.state.openItemId} toggleSingleOpen = {this.toggleSingleOpen}/>
     }
 }
 

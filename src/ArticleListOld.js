@@ -9,8 +9,8 @@ const ArticleList = React.createClass({
 
         const listItems = articles.map((article) => <li key={article.id}>
             <Article article={article}
-                     isOpen={article.id == this.state.openItemId && this.state.isOpen}
-                     toggleSingleOpen={()  => this.toggleOpen(article.id)}
+                     isOpen={article.id == this.state.openItemId}
+                     toggleSingleOpen={this.toggleSingleOpen(article.id)}
             />
         </li>)
         return (
