@@ -3,12 +3,12 @@ import Article from './Article'
 import toggleSingleOpen from './decorators/toggleSingleOpen'
 
 function ArticleList(props){
-        const { articles} = props;
+        const { articles, openItemId, isOpen, toggleSingleOpen } = props;
 
         const listItems = articles.map((article) => <li key={article.id}>
             <Article article = {article}
-                isOpen = {article.id == this.state.openItemId}
-                toggleSingleOpen = {this.toggleSingleOpen(article.id)}
+                isOpen = {article.id == openItemId && isOpen}
+                toggleSingleOpen = {toggleSingleOpen(article.id)}
             />
         </li>)
         return (
