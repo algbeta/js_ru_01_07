@@ -8,6 +8,7 @@ export default (Component) => class DecoratedComponent extends React.Component {
 
     toggleSingleOpen = id => ev => {
         if (ev) ev.preventDefault();
+        //Это усложняет использование. Достаточно просто сделать openItemId === null что б закрыть
         this.setState({
             openItemId: id,
             isOpen: id != this.state.openItemId ||  !this.state.isOpen
