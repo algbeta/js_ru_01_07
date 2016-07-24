@@ -15,6 +15,7 @@ const defaultArticles = recordsFromArray(Article, normalizedArticles)
 
 export default (articles = defaultArticles, action) => {
     const { type, payload } = action
+    debugger;
 
     switch (type) {
         case DELETE_ARTICLE:

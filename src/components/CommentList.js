@@ -5,6 +5,8 @@ import { connect } from 'react-redux'
 
 class CommentList extends Component {
 
+
+
     componentWillMount() {
         console.log('---', this.props)
     }
@@ -25,9 +27,11 @@ class CommentList extends Component {
     }
 
     render() {
-        const { commentObjects, isOpen, toggleOpen } = this.props
+        debugger;
+        const { commentObjects, isOpen, toggleOpen, createCommentHandler } = this.props
+        const formBody = isOpen ? (<form><input type="text" placeholder="author" ref="author"/><input type="text" ref="text" placeholder="text"/><input type="button" onClick={createCommentHandler} value="submit comment"/></form>) : null
 
-        if (!commentObjects || !commentObjects.length) return <h3>no comments yet</h3>
+        if (!commentObjects || !commentObjects.length) return (<div><h3>no comments yet</h3>{formBody}</div>)
 
         const commentItems = commentObjects.map(comment => <li key = {comment.id}><Comment comment = {comment}/></li>)
         const body = isOpen ? <ul>{commentItems}</ul> : null
@@ -36,6 +40,7 @@ class CommentList extends Component {
             <div>
                 <a href="#" onClick = {toggleOpen} ref="toggler">{linkText}</a>
                 {body}
+                {formBody}
             </div>
         )
     }

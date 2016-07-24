@@ -3,6 +3,7 @@ import CommentList from './../CommentList'
 import CSSTransitionGroup from 'react-addons-css-transition-group'
 import './style.css'
 import { deleteArticle } from '../../AC/articles'
+import { createComment } from '../../AC/comments'
 import { connect } from 'react-redux'
 
 class Article extends Component {
@@ -22,7 +23,7 @@ class Article extends Component {
 
     render() {
         const { isOpen, openArticle, article: { title, text, comments } } = this.props
-            const body = isOpen ? <section>{ text } <CommentList comments = {comments} /></section> : null
+            const body = isOpen ? <section>{ text } <CommentList comments = {comments} createCommentHandler = {this.handleCommentCreate} /></section> : null
 
             return (
                 <div className="article">
@@ -38,6 +39,13 @@ class Article extends Component {
         ev.preventDefault()
         const { article, deleteArticle } = this.props
         deleteArticle(article.id)
+    }
+
+    handleCommentCreate = (ev) => {
+        ev.preventDefault();
+        debugger;
+        const {pr}  = this.props
+        createComment();
     }
 }
 
